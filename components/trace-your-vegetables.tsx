@@ -185,7 +185,7 @@ export function TraceYourVegetablesComponent() {
           </div>
         </div>
         <div className="mt-8 text-center text-green-600">
-          © 2023 TraceVeg. All rights reserved.
+          © 2024 TraceVeg. All rights reserved.
         </div>
       </footer>
     </div>
