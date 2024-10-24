@@ -284,6 +284,11 @@ function PriceTrendsVisualization() {
       { month: 'Apr', msp: 19, localPrice: 23 },
       { month: 'May', msp: 20, localPrice: 25 },
       { month: 'Jun', msp: 20, localPrice: 24 },
+      { month: 'Jul', msp: 20, localPrice: 24 },
+      { month: 'Sept', msp: 20, localPrice: 24 },
+      { month: 'Oct', msp: 20, localPrice: 24 },
+      { month: 'Nov', msp: 20, localPrice: 24 },
+
     ],
     Potatoes: [
       { month: 'Jan', msp: 14, localPrice: 16 },
@@ -292,6 +297,11 @@ function PriceTrendsVisualization() {
       { month: 'Apr', msp: 15, localPrice: 18 },
       { month: 'May', msp: 16, localPrice: 19 },
       { month: 'Jun', msp: 16, localPrice: 18 },
+      { month: 'Jul', msp: 16, localPrice: 18 },
+      { month: 'Aug', msp: 16, localPrice: 18 },
+      { month: 'Sept', msp: 16, localPrice: 18 },
+      { month: 'Oct', msp: 16, localPrice: 18 },
+      { month: 'Nov', msp: 16, localPrice: 18 },
     ],
     Onions: [
       { month: 'Jan', msp: 22, localPrice: 25 },
@@ -299,7 +309,12 @@ function PriceTrendsVisualization() {
       { month: 'Mar', msp: 23, localPrice: 26 },
       { month: 'Apr', msp: 23, localPrice: 28 },
       { month: 'May', msp: 24, localPrice: 30 },
-      { month: 'Jun', msp: 24, localPrice: 29 },
+      { month: 'Jun', msp: 24, localPrice: 31 },
+      { month: 'Jul', msp: 24, localPrice: 33 },
+      { month: 'Aug', msp: 24, localPrice: 36 },
+      { month: 'Sept', msp: 24, localPrice: 35 },
+      { month: 'Oct', msp: 24, localPrice: 38 },
+      { month: 'Nov', msp: 24, localPrice: 39 },
     ],
   }
 
@@ -395,9 +410,13 @@ function GovernmentSchemes() {
           </div>
         ))}
       </div>
-      <Button className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white">
-        Check Eligibility
-      </Button>
+      <Link href="https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2002012" passHref legacyBehavior>
+        <a target="_blank" rel="noopener noreferrer">
+          <Button className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white">
+            Check Eligibility
+          </Button>
+        </a>
+      </Link>
     </motion.div>
   )
 }
