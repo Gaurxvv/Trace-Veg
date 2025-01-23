@@ -1,62 +1,152 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { ChevronRight, Leaf, BarChart2, CreditCard, Facebook, Twitter, Instagram, ArrowUp, ArrowDown, Heart, Sun, Cloud, CloudRain, AlertTriangle, RefreshCw, Search, QrCode } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
-import Link from 'next/link'
-import About from './about'
-import Farmers from './farmers'
-import Consumers from './consumers'
-import Contact from './contact'
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  ChevronRight,
+  Leaf,
+  BarChart2,
+  CreditCard,
+  Facebook,
+  Twitter,
+  Instagram,
+  ArrowUp,
+  ArrowDown,
+  Heart,
+  Sun,
+  Cloud,
+  CloudRain,
+  AlertTriangle,
+  RefreshCw,
+  Search,
+  QrCode,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import Link from "next/link";
+import About from "./about";
+import Farmers from "./farmers";
+import Consumers from "./consumers";
+import Contact from "./contact";
+import { Signup } from "./signup";
+import { BlockchainTransaction } from "./blockchain-transaction";
+import { CropHealth } from "./crop-health";
+import { FarmerPayments } from "./farmer-payments";
+import AboutDevelopersPage from "./about-developers";
+import { TermsOfServicePageComponent } from "./terms-of-service-page";
+import { FaqPage } from "./faq-page";
+
+interface FeatureCardProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  children?: React.ReactNode;
+  onClick?: () => void;
+}
+
+interface AutomatedPriceCardProps {
+  vegetable: string;
+  msp: number;
+  localPrice: number;
+}
+
+type VegetableData = {
+  month: string;
+  msp: number;
+  localPrice: number;
+};
+
+type PriceTrendsData = {
+  [key in "Tomatoes" | "Potatoes" | "Onions"]: VegetableData[];
+};
 
 export function TraceYourVegetablesComponent() {
-  const [text, setText] = useState('')
-  const fullText = "Trace Your Vegetables"
-  const [currentPage, setCurrentPage] = useState('home')
-  const [searchQuery, setSearchQuery] = useState('')
-  const [showQRScanner, setShowQRScanner] = useState(false)
+  const [text, setText] = useState("");
+  const fullText = "Trace Your Vegetables";
+  const [currentPage, setCurrentPage] = useState("home");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showQRScanner, setShowQRScanner] = useState(false);
 
   useEffect(() => {
-    let i = 0
+    let i = 0;
     const typingEffect = setInterval(() => {
       if (i < fullText.length) {
-        setText(fullText.slice(0, i + 1))
-        i++
+        setText(fullText.slice(0, i + 1));
+        i++;
       } else {
-        clearInterval(typingEffect)
+        clearInterval(typingEffect);
       }
-    }, 100)
+    }, 100);
 
-    return () => clearInterval(typingEffect)
-  }, [])
+    return () => clearInterval(typingEffect);
+  }, []);
 
-  const handleSearch = (e) => {
-    e.preventDefault()
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
     // Implement search functionality here
-    console.log('Searching for:', searchQuery)
-  }
+    console.log("Searching for:", searchQuery);
+  };
 
   const handleQRScan = () => {
-    setShowQRScanner(!showQRScanner)
+    setShowQRScanner(!showQRScanner);
     // Implement QR scanning functionality here
-    console.log('QR scanner toggled')
-  }
+    console.log("QR scanner toggled");
+  };
 
   return (
     <div className="min-h-screen bg-white text-green-800 flex flex-col">
       <header className="py-6 px-4 md:px-6 lg:px-8 border-b border-green-200">
         <nav className="flex justify-between items-center max-w-6xl mx-auto">
-          <div className="text-2xl font-bold text-green-600">TraceVeg</div>
+          <div className="text-2xl font-bold text-green-600">VeggieTrace</div>
           <div className="space-x-4">
-            <Button variant="ghost" className="text-green-600 hover:text-green-800 hover:bg-green-100" onClick={() => setCurrentPage('home')}>Home</Button>
-            <Button variant="ghost" className="text-green-600 hover:text-green-800 hover:bg-green-100" onClick={() => setCurrentPage('about')}>About</Button>
-            <Button variant="ghost" className="text-green-600 hover:text-green-800 hover:bg-green-100" onClick={() => setCurrentPage('farmers')}>Farmers</Button>
-            <Button variant="ghost" className="text-green-600 hover:text-green-800 hover:bg-green-100" onClick={() => setCurrentPage('consumers')}>Consumers</Button>
-            <Button variant="ghost" className="text-green-600 hover:text-green-800 hover:bg-green-100" onClick={() => setCurrentPage('contact')}>Contact</Button>
-            <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white">Sign Up</Button>
+            <Button
+              variant="ghost"
+              className="text-green-600 hover:text-green-800 hover:bg-green-100"
+              onClick={() => setCurrentPage("home")}
+            >
+              Home
+            </Button>
+            <Button
+              variant="ghost"
+              className="text-green-600 hover:text-green-800 hover:bg-green-100"
+              onClick={() => setCurrentPage("about")}
+            >
+              About
+            </Button>
+            <Button
+              variant="ghost"
+              className="text-green-600 hover:text-green-800 hover:bg-green-100"
+              onClick={() => setCurrentPage("farmers")}
+            >
+              Farmers
+            </Button>
+            <Button
+              variant="ghost"
+              className="text-green-600 hover:text-green-800 hover:bg-green-100"
+              onClick={() => setCurrentPage("consumers")}
+            >
+              Consumers
+            </Button>
+            <Button
+              variant="ghost"
+              className="text-green-600 hover:text-green-800 hover:bg-green-100"
+              onClick={() => setCurrentPage("contact")}
+            >
+              Contact
+            </Button>
+            <Button variant="outline" onClick={() => setCurrentPage("signup")}>
+              Sign Up
+            </Button>
           </div>
         </nav>
       </header>
@@ -72,75 +162,119 @@ export function TraceYourVegetablesComponent() {
               className="w-full border-green-300 focus:ring-green-500 focus:border-green-500"
             />
           </form>
-          <Button type="submit" onClick={handleSearch} className="bg-green-600 hover:bg-green-700 text-white mr-2">
+          <Button
+            type="submit"
+            onClick={handleSearch}
+            className="bg-green-600 hover:bg-green-700 text-white mr-2"
+          >
             <Search className="w-5 h-5" />
           </Button>
-          <Button onClick={handleQRScan} className="bg-green-600 hover:bg-green-700 text-white">
+          <Button
+            onClick={handleQRScan}
+            className="bg-green-600 hover:bg-green-700 text-white"
+          >
             <QrCode className="w-5 h-5" />
           </Button>
         </div>
       </div>
 
       <main className="flex-grow max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-12">
-        {currentPage === 'home' && (
+        {currentPage === "home" && (
           <>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-green-700">
               {text}
               <span className="inline-block w-0.5 h-8 bg-green-600 animate-blink ml-1"></span>
             </h1>
-            <p className="text-xl mb-8 text-green-600">Empowering farmers with blockchain technology for transparent and efficient agriculture.</p>
-            
+            <p className="text-xl mb-8 text-green-600">
+              Empowering farmers with blockchain technology for transparent and
+              efficient agriculture.
+            </p>
+
             <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <FeatureCard 
+              <FeatureCard
                 icon={<Leaf className="w-8 h-8 text-green-600" />}
                 title="Blockchain Transactions"
                 description="Secure and transparent tracking of your produce from farm to table."
-              />
-              <FeatureCard 
+                onClick={() => setCurrentPage("blockchain")}
+              >
+                <Button
+                  variant="link"
+                  className="text-green-600 hover:underline cursor-pointer  ml-0 mt-2"
+                >
+                  Learn More
+                </Button>
+              </FeatureCard>
+
+              <FeatureCard
                 icon={<BarChart2 className="w-8 h-8 text-green-600" />}
                 title="Real-time Crop Health"
                 description="Monitor and manage your crop health with advanced IoT sensors."
-              />
-              <FeatureCard 
+                onClick={() => setCurrentPage("crop-health")}
+              >
+                <Button
+                  variant="link"
+                  className="text-green-600 hover:underline cursor-pointer ml-0 mt-2"
+                >
+                  Learn More
+                </Button>
+              </FeatureCard>
+              <FeatureCard
                 icon={<CreditCard className="w-8 h-8 text-green-600" />}
                 title="Direct Farmer Payments"
                 description="Receive payments directly, cutting out middlemen and increasing profits."
-              />
+                onClick={() => setCurrentPage("payments")}
+              >
+                <Button
+                  variant="link"
+                  className="text-green-600 hover:underline cursor-pointer ml-0 mt-2"
+                >
+                  Learn More
+                </Button>
+              </FeatureCard>
             </div>
 
-            <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg text-lg font-semibold">
+            <Button
+              className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg text-lg font-semibold"
+              onClick={() => setCurrentPage("signup")}
+            >
               Get Started
               <ChevronRight className="ml-2 w-5 h-5" />
             </Button>
 
             <section className="mt-16">
-              <h2 className="text-3xl font-bold mb-6 text-green-700">Automated Price Updates</h2>
+              <h2 className="text-3xl font-bold mb-6 text-green-700">
+                Automated Price Updates
+              </h2>
               <div className="grid md:grid-cols-3 gap-8">
-                <AutomatedPriceCard 
-                  vegetable="Tomatoes" 
-                  msp={20} 
-                  localPrice={25} 
+                <AutomatedPriceCard
+                  vegetable="Tomatoes"
+                  msp={20}
+                  localPrice={25}
                 />
-                <AutomatedPriceCard 
-                  vegetable="Potatoes" 
-                  msp={15} 
-                  localPrice={18} 
+                <AutomatedPriceCard
+                  vegetable="Potatoes"
+                  msp={15}
+                  localPrice={18}
                 />
-                <AutomatedPriceCard 
-                  vegetable="Onions" 
-                  msp={25} 
-                  localPrice={30} 
+                <AutomatedPriceCard
+                  vegetable="Onions"
+                  msp={25}
+                  localPrice={30}
                 />
               </div>
             </section>
 
             <section className="mt-16">
-              <h2 className="text-3xl font-bold mb-6 text-green-700">Price Trends Visualization</h2>
+              <h2 className="text-3xl font-bold mb-6 text-green-700">
+                Price Trends Visualization
+              </h2>
               <PriceTrendsVisualization />
             </section>
 
             <section className="mt-16">
-              <h2 className="text-3xl font-bold mb-6 text-green-700">Weather and Crop Advisory</h2>
+              <h2 className="text-3xl font-bold mb-6 text-green-700">
+                Weather and Crop Advisory
+              </h2>
               <div className="grid md:grid-cols-2 gap-8">
                 <WeatherForecast />
                 <GovernmentSchemes />
@@ -148,29 +282,77 @@ export function TraceYourVegetablesComponent() {
             </section>
           </>
         )}
-        {currentPage === 'about' && <About />}
-        {currentPage === 'farmers' && <Farmers />}
-        {currentPage === 'consumers' && <Consumers />}
-        {currentPage === 'contact' && <Contact />}
+        {currentPage === "about" && <About />}
+        {currentPage === "farmers" && <Farmers />}
+        {currentPage === "consumers" && <Consumers />}
+        {currentPage === "contact" && <Contact />}
+        {currentPage === "signup" && <Signup />}
+        {currentPage === "about-developers" && <AboutDevelopersPage />}
+        {currentPage === "blockchain" && <BlockchainTransaction />}
+        {currentPage === "payments" && <FarmerPayments />}
+        {currentPage === "crop-health" && <CropHealth />}
+        {currentPage === "terms-of-service" && <TermsOfServicePageComponent />}
+        {currentPage === "faq" && <FaqPage />}
       </main>
 
       <footer className="bg-green-100 py-8 px-4 md:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-green-700">TraceVeg</h3>
-            <p className="text-green-600">Empowering farmers with blockchain technology for transparent and efficient agriculture.</p>
+            <h3 className="text-xl font-semibold mb-4 text-green-700">
+              TraceVeg
+            </h3>
+            <p className="text-green-600">
+              Empowering farmers with blockchain technology for transparent and
+              efficient agriculture.
+            </p>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-green-700">Quick Links</h3>
+            <h3 className="text-xl font-semibold mb-4 text-green-700">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-green-600 hover:text-green-800">About Us</a></li>
-              <li><a href="#" className="text-green-600 hover:text-green-800">Features</a></li>
-              <li><a href="#" className="text-green-600 hover:text-green-800">Contact</a></li>
-              <li><a href="#" className="text-green-600 hover:text-green-800">Privacy Policy</a></li>
+              <li>
+                <a
+                  href="#"
+                  onClick={() => setCurrentPage("about-developers")}
+                  className="text-green-600 hover:text-green-800"
+                >
+                  About Developers
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  onClick={() => setCurrentPage("faq")}
+                  className="text-green-600 hover:text-green-800"
+                >
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  onClick={() => setCurrentPage("contact")}
+                  className="text-green-600 hover:text-green-800"
+                >
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  onClick={() => setCurrentPage("terms-of-service")}
+                  className="text-green-600 hover:text-green-800"
+                >
+                  Terms and Conditions
+                </a>
+              </li>
             </ul>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-green-700">Connect With Us</h3>
+            <h3 className="text-xl font-semibold mb-4 text-green-700">
+              Connect With Us
+            </h3>
             <div className="flex space-x-4">
               <a href="#" className="text-green-600 hover:text-green-800">
                 <Facebook className="w-6 h-6" />
@@ -189,48 +371,60 @@ export function TraceYourVegetablesComponent() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
-function FeatureCard({ icon, title, description }) {
+function FeatureCard({
+  icon,
+  title,
+  description,
+  children,
+  onClick,
+}: FeatureCardProps) {
   return (
-    <motion.div 
-      className="p-6 border border-green-200 rounded-lg hover:shadow-lg transition-shadow duration-300"
+    <motion.div
+      className="p-6 border border-green-200 rounded-lg hover:shadow-lg transition-shadow duration-300 cursor-pointer"
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300 }}
+      onClick={onClick}
     >
       <div className="mb-4">{icon}</div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p className="text-green-700">{description}</p>
+      {children}
     </motion.div>
-  )
+  );
 }
 
-function AutomatedPriceCard({ vegetable, msp, localPrice }) {
-  const [currentMsp, setCurrentMsp] = useState(msp)
-  const [currentLocalPrice, setCurrentLocalPrice] = useState(localPrice)
-  const [isUpdating, setIsUpdating] = useState(false)
+function AutomatedPriceCard({
+  vegetable,
+  msp,
+  localPrice,
+}: AutomatedPriceCardProps) {
+  const [currentMsp, setCurrentMsp] = useState(msp);
+  const [currentLocalPrice, setCurrentLocalPrice] = useState(localPrice);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   const fetchPrices = () => {
-    setIsUpdating(true)
+    setIsUpdating(true);
     // Simulating API call with setTimeout
     setTimeout(() => {
-      setCurrentMsp(msp + Math.random() * 2 - 1) // Random fluctuation between -1 and 1
-      setCurrentLocalPrice(localPrice + Math.random() * 4 - 2) // Random fluctuation between -2 and 2
-      setIsUpdating(false)
-    }, 1000)
-  }
+      setCurrentMsp(msp + Math.random() * 2 - 1); // Random fluctuation between -1 and 1
+      setCurrentLocalPrice(localPrice + Math.random() * 4 - 2); // Random fluctuation between -2 and 2
+      setIsUpdating(false);
+    }, 1000);
+  };
 
   useEffect(() => {
-    const interval = setInterval(fetchPrices, 30000) // Update every 30 seconds
-    return () => clearInterval(interval)
-  }, [])
+    const interval = setInterval(fetchPrices, 30000); // Update every 30 seconds
+    return () => clearInterval(interval);
+  }, []);
 
-  const priceDifference = currentLocalPrice - currentMsp
-  const percentageDifference = (priceDifference / currentMsp) * 100
+  const priceDifference = currentLocalPrice - currentMsp;
+  const percentageDifference = (priceDifference / currentMsp) * 100;
 
   return (
-    <motion.div 
+    <motion.div
       className="p-6 border border-green-200 rounded-lg hover:shadow-lg transition-shadow duration-300"
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300 }}
@@ -244,23 +438,40 @@ function AutomatedPriceCard({ vegetable, msp, localPrice }) {
           disabled={isUpdating}
           className="text-green-600 border-green-600 hover:bg-green-100"
         >
-          <RefreshCw className={`w-4 h-4 mr-2 ${isUpdating ? 'animate-spin' : ''}`} />
+          <RefreshCw
+            className={`w-4 h-4 mr-2 ${isUpdating ? "animate-spin" : ""}`}
+          />
           Update
         </Button>
       </div>
       <div className="grid grid-cols-2 gap-4 mb-4">
         <div>
           <p className="text-sm text-green-600">MSP</p>
-          <p className="text-lg font-bold text-green-700">₹{currentMsp.toFixed(2)}/kg</p>
+          <p className="text-lg font-bold text-green-700">
+            ₹{currentMsp.toFixed(2)}/kg
+          </p>
         </div>
         <div>
           <p className="text-sm text-green-600">Local Mandi Price</p>
-          <p className="text-lg font-bold text-green-700">₹{currentLocalPrice.toFixed(2)}/kg</p>
+          <p className="text-lg font-bold text-green-700">
+            ₹{currentLocalPrice.toFixed(2)}/kg
+          </p>
         </div>
       </div>
-      <div className={`flex items-center ${priceDifference >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-        {priceDifference >= 0 ? <ArrowUp className="w-4 h-4 mr-1" /> : <ArrowDown className="w-4 h-4 mr-1" />}
-        <span>₹{Math.abs(priceDifference).toFixed(2)} ({percentageDifference.toFixed(2)}%)</span>
+      <div
+        className={`flex items-center ${
+          priceDifference >= 0 ? "text-green-600" : "text-red-600"
+        }`}
+      >
+        {priceDifference >= 0 ? (
+          <ArrowUp className="w-4 h-4 mr-1" />
+        ) : (
+          <ArrowDown className="w-4 h-4 mr-1" />
+        )}
+        <span>
+          ₹{Math.abs(priceDifference).toFixed(2)} (
+          {percentageDifference.toFixed(2)}%)
+        </span>
       </div>
       <p className="mt-2 text-sm text-green-600">
         {priceDifference >= 0
@@ -268,71 +479,77 @@ function AutomatedPriceCard({ vegetable, msp, localPrice }) {
           : "Local price is lower than MSP. Consider holding or seeking government support."}
       </p>
     </motion.div>
-  )
+  );
 }
 
 function PriceTrendsVisualization() {
-  const [selectedVegetable, setSelectedVegetable] = useState('Tomatoes')
-  const vegetables = ['Tomatoes', 'Potatoes', 'Onions']
+  const [selectedVegetable, setSelectedVegetable] =
+    useState<keyof PriceTrendsData>("Tomatoes");
+  const vegetables = ["Tomatoes", "Potatoes", "Onions"];
 
   // Sample data for price trends (replace with actual data from API)
-  const priceTrendsData = {
+  const priceTrendsData: PriceTrendsData = {
     Tomatoes: [
-      { month: 'Jan', msp: 18, localPrice: 20 },
-      { month: 'Feb', msp: 18, localPrice: 22 },
-      { month: 'Mar', msp: 19, localPrice: 21 },
-      { month: 'Apr', msp: 19, localPrice: 23 },
-      { month: 'May', msp: 20, localPrice: 25 },
-      { month: 'Jun', msp: 20, localPrice: 24 },
-      { month: 'Jul', msp: 20, localPrice: 24 },
-      { month: 'Sept', msp: 20, localPrice: 24 },
-      { month: 'Oct', msp: 20, localPrice: 24 },
-      { month: 'Nov', msp: 20, localPrice: 24 },
-
+      { month: "Jan", msp: 18, localPrice: 20 },
+      { month: "Feb", msp: 18, localPrice: 22 },
+      { month: "Mar", msp: 19, localPrice: 21 },
+      { month: "Apr", msp: 19, localPrice: 23 },
+      { month: "May", msp: 20, localPrice: 25 },
+      { month: "Jun", msp: 20, localPrice: 24 },
+      { month: "Jul", msp: 20, localPrice: 24 },
+      { month: "Sept", msp: 20, localPrice: 24 },
+      { month: "Oct", msp: 20, localPrice: 24 },
+      { month: "Nov", msp: 20, localPrice: 24 },
     ],
     Potatoes: [
-      { month: 'Jan', msp: 14, localPrice: 16 },
-      { month: 'Feb', msp: 14, localPrice: 15 },
-      { month: 'Mar', msp: 15, localPrice: 17 },
-      { month: 'Apr', msp: 15, localPrice: 18 },
-      { month: 'May', msp: 16, localPrice: 19 },
-      { month: 'Jun', msp: 16, localPrice: 18 },
-      { month: 'Jul', msp: 16, localPrice: 18 },
-      { month: 'Aug', msp: 16, localPrice: 18 },
-      { month: 'Sept', msp: 16, localPrice: 18 },
-      { month: 'Oct', msp: 16, localPrice: 18 },
-      { month: 'Nov', msp: 16, localPrice: 18 },
+      { month: "Jan", msp: 14, localPrice: 16 },
+      { month: "Feb", msp: 14, localPrice: 15 },
+      { month: "Mar", msp: 15, localPrice: 17 },
+      { month: "Apr", msp: 15, localPrice: 18 },
+      { month: "May", msp: 16, localPrice: 19 },
+      { month: "Jun", msp: 16, localPrice: 18 },
+      { month: "Jul", msp: 16, localPrice: 18 },
+      { month: "Aug", msp: 16, localPrice: 18 },
+      { month: "Sept", msp: 16, localPrice: 18 },
+      { month: "Oct", msp: 16, localPrice: 18 },
+      { month: "Nov", msp: 16, localPrice: 18 },
     ],
     Onions: [
-      { month: 'Jan', msp: 22, localPrice: 25 },
-      { month: 'Feb', msp: 22, localPrice: 24 },
-      { month: 'Mar', msp: 23, localPrice: 26 },
-      { month: 'Apr', msp: 23, localPrice: 28 },
-      { month: 'May', msp: 24, localPrice: 30 },
-      { month: 'Jun', msp: 24, localPrice: 31 },
-      { month: 'Jul', msp: 24, localPrice: 33 },
-      { month: 'Aug', msp: 24, localPrice: 36 },
-      { month: 'Sept', msp: 24, localPrice: 35 },
-      { month: 'Oct', msp: 24, localPrice: 38 },
-      { month: 'Nov', msp: 24, localPrice: 39 },
+      { month: "Jan", msp: 22, localPrice: 25 },
+      { month: "Feb", msp: 22, localPrice: 24 },
+      { month: "Mar", msp: 23, localPrice: 26 },
+      { month: "Apr", msp: 23, localPrice: 28 },
+      { month: "May", msp: 24, localPrice: 30 },
+      { month: "Jun", msp: 24, localPrice: 31 },
+      { month: "Jul", msp: 24, localPrice: 33 },
+      { month: "Aug", msp: 24, localPrice: 36 },
+      { month: "Sept", msp: 24, localPrice: 35 },
+      { month: "Oct", msp: 24, localPrice: 38 },
+      { month: "Nov", msp: 24, localPrice: 39 },
     ],
-  }
+  };
 
   return (
-    <motion.div 
+    <motion.div
       className="p-6 border border-green-200 rounded-lg hover:shadow-lg transition-shadow duration-300"
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300 }}
     >
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-xl font-semibold">Price Trends: {selectedVegetable}</h3>
+        <h3 className="text-xl font-semibold">
+          Price Trends: {selectedVegetable}
+        </h3>
         <select
           value={selectedVegetable}
-          onChange={(e) => setSelectedVegetable(e.target.value)}
+          onChange={(e) =>
+            setSelectedVegetable(e.target.value as keyof PriceTrendsData)
+          }
           className="border border-green-300 rounded-md p-2 text-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
         >
           {vegetables.map((veg) => (
-            <option key={veg} value={veg}>{veg}</option>
+            <option key={veg} value={veg}>
+              {veg}
+            </option>
           ))}
         </select>
       </div>
@@ -343,26 +560,54 @@ function PriceTrendsVisualization() {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" data={priceTrendsData[selectedVegetable]} dataKey="msp" stroke="#059669" name="MSP" />
-          <Line type="monotone" data={priceTrendsData[selectedVegetable]} dataKey="localPrice" stroke="#3B82F6" name="Local Price" />
+          <Line
+            type="monotone"
+            data={priceTrendsData[selectedVegetable]}
+            dataKey="msp"
+            stroke="#059669"
+            name="MSP"
+          />
+          <Line
+            type="monotone"
+            data={priceTrendsData[selectedVegetable]}
+            dataKey="localPrice"
+            stroke="#3B82F6"
+            name="Local Price"
+          />
         </LineChart>
       </ResponsiveContainer>
       <p className="mt-4 text-sm text-green-600">
-        Compare historical MSP and local market prices to make informed selling decisions.
+        Compare historical MSP and local market prices to make informed selling
+        decisions.
       </p>
     </motion.div>
-  )
+  );
 }
 
 function WeatherForecast() {
   const weatherData = [
-    { day: "Today", icon: <Sun className="w-8 h-8 text-yellow-500" />, temp: "32°C", description: "Sunny" },
-    { day: "Tomorrow", icon: <Cloud className="w-8 h-8 text-gray-500" />, temp: "28°C", description: "Partly Cloudy" },
-    { day: "Wednesday", icon: <CloudRain className="w-8 h-8 text-blue-500" />, temp: "25°C", description: "Light Rain" },
-  ]
+    {
+      day: "Today",
+      icon: <Sun className="w-8 h-8 text-yellow-500" />,
+      temp: "32°C",
+      description: "Sunny",
+    },
+    {
+      day: "Tomorrow",
+      icon: <Cloud className="w-8 h-8 text-gray-500" />,
+      temp: "28°C",
+      description: "Partly Cloudy",
+    },
+    {
+      day: "Wednesday",
+      icon: <CloudRain className="w-8 h-8 text-blue-500" />,
+      temp: "25°C",
+      description: "Light Rain",
+    },
+  ];
 
   return (
-    <motion.div 
+    <motion.div
       className="p-6 border border-green-200 rounded-lg hover:shadow-lg transition-shadow duration-300"
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300 }}
@@ -380,20 +625,28 @@ function WeatherForecast() {
           </div>
         ))}
       </div>
-      <p className="mt-4 text-sm text-green-600">Plan your irrigation and harvesting activities accordingly.</p>
+      <p className="mt-4 text-sm text-green-600">
+        Plan your irrigation and harvesting activities accordingly.
+      </p>
     </motion.div>
-  )
+  );
 }
 
 function GovernmentSchemes() {
   const schemes = [
     { name: "PM-KISAN", description: "Direct income support for farmers" },
-    { name: "Crop Insurance Scheme", description: "Protection against crop failure" },
-    { name: "Soil Health Card Scheme", description: "Soil nutrient status and recommended dosage of nutrients" },
-  ]
+    {
+      name: "Crop Insurance Scheme",
+      description: "Protection against crop failure",
+    },
+    {
+      name: "Soil Health Card Scheme",
+      description: "Soil nutrient status and recommended dosage of nutrients",
+    },
+  ];
 
   return (
-    <motion.div 
+    <motion.div
       className="p-6 border border-green-200 rounded-lg hover:shadow-lg transition-shadow duration-300"
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300 }}
@@ -410,7 +663,11 @@ function GovernmentSchemes() {
           </div>
         ))}
       </div>
-      <Link href="https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2002012" passHref legacyBehavior>
+      <Link
+        href="https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2002012"
+        passHref
+        legacyBehavior
+      >
         <a target="_blank" rel="noopener noreferrer">
           <Button className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white">
             Check Eligibility
@@ -418,5 +675,5 @@ function GovernmentSchemes() {
         </a>
       </Link>
     </motion.div>
-  )
+  );
 }
