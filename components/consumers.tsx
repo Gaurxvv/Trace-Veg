@@ -63,7 +63,7 @@ export default function ConsumersPage() {
               <h3 className="text-xl font-semibold mb-2">Verify</h3>
               <p className="text-gray-700">
                 Review the blockchain-verified information about your
-                vegetables' origin and quality.
+                vegetables&apos; origin and quality.
               </p>
             </div>
           </div>

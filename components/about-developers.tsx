@@ -110,8 +110,8 @@ export default function AboutDevelopersPage() {
                   index === currentQuote ? "opacity-100" : "opacity-0"
                 }`}
               >
-                <p className="text-lg italic mb-2">"{dev.quote}"</p>
-                <p className="text-right"> "{dev.name}"</p>
+                <p className="text-lg italic mb-2">&quot;{dev.quote}&quot;</p>
+                <p className="text-right">&quot;{dev.name}&quot;</p>
               </div>
             ))}
           </div>
