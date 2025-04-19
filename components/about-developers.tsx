@@ -7,28 +7,12 @@ export default function AboutDevelopersPage() {
 
   const developers = [
     {
-      name: "Shivam Sharma",
-      quote:
-        "Transparency is the currency of trust. When farmers and consumers have equal access to information, fairness flourishes.",
-      github: "https://github.com/150ftw",
-      instagram: "https://www.instagram.com/shiv_mmm/",
-      linkedin: "https://www.linkedin.com/in/shivam-sharma-331945284/",
-    },
-    {
       name: "Gaurav Mehra",
       quote:
         "Empowering farmers with knowledge empowers the entire food chain, creating a system where every seed sown reaps not just produce but prosperity for all.",
       github: "https://github.com/Gaurxvv",
       instagram: "https://www.instagram.com/gxuravv/",
       linkedin: "https://www.linkedin.com/in/gaurav-mehra-560479277/",
-    },
-    {
-      name: "Ansh Tripathi",
-      quote:
-        "Fair markets start with fair information. When farmers know their worth, and consumers know their choices, communities thrive.",
-      github: "https://github.com/Ansh525",
-      instagram: "https://instagram.com/anshtripathi_009",
-      linkedin: "https://www.linkedin.com/in/ansh-tripathi-312084253/",
     },
   ];
 
@@ -43,7 +27,7 @@ export default function AboutDevelopersPage() {
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100">
       <main className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-green-800 mb-8 text-center">
-          About the Developers
+          About the Developer
         </h1>
 
         <section className="bg-white rounded-lg shadow-md p-8 mb-12">
