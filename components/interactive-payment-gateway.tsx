@@ -86,7 +86,7 @@ export function InteractivePaymentGatewayComponent() {
           {displayedRemarks.slice(0, 3).map((remark, index) => (
             <Card key={index} className="bg-green-100 shadow-md">
               <CardContent className="p-4">
-                <p className="text-sm italic text-green-800">"{remark}"</p>
+                <p className="text-sm italic text-green-800">{`"${remark}"`}</p>
               </CardContent>
             </Card>
           ))}
@@ -193,7 +193,7 @@ export function InteractivePaymentGatewayComponent() {
           {displayedRemarks.slice(3, 6).map((remark, index) => (
             <Card key={index} className="bg-green-100 shadow-md">
               <CardContent className="p-4">
-                <p className="text-sm italic text-green-800">"{remark}"</p>
+                <p className="text-sm italic text-green-800">{`"${remark}"`}</p>
               </CardContent>
             </Card>
           ))}

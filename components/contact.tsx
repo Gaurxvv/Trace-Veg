@@ -1,40 +1,47 @@
-import { useState } from 'react'
-import { Mail, Phone, MapPin } from 'lucide-react'
-import Link from 'next/link'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { useState } from "react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  })
+    name: "",
+    email: "",
+    message: "",
+  });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prevState => ({ ...prevState, [name]: value }))
-  }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({ ...prevState, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    alert('Thank you for your message. We will get back to you soon!')
-    setFormData({ name: '', email: '', message: '' })
-  }
+    e.preventDefault();
+    alert("Thank you for your message. We will get back to you soon!");
+    setFormData({ name: "", email: "", message: "" });
+  };
 
   return (
     <div className="min-h-96 w-full bg-gradient-to-b from-green-50 to-green-100 rounded-xl">
-
       <main className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-green-800 mb-8 text-center">Contact Us</h1>
-        
+        <h1 className="text-4xl font-bold text-green-800 mb-8 text-center">
+          Contact Us
+        </h1>
+
         <div className="grid md:grid-cols-2 gap-8">
           <section className="bg-white rounded-lg shadow-md p-8">
             <h2 className="text-2xl font-semibold mb-6">Get in Touch</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Name
+                </label>
                 <Input
                   type="text"
                   id="name"
@@ -46,7 +53,12 @@ export default function ContactPage() {
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Email
+                </label>
                 <Input
                   type="email"
                   id="email"
@@ -58,7 +70,12 @@ export default function ContactPage() {
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Message
+                </label>
                 <Textarea
                   id="message"
                   name="message"
@@ -69,12 +86,15 @@ export default function ContactPage() {
                   rows={4}
                 />
               </div>
-              <Button type="submit" className="w-full bg-green-600 hover:bg-green-700">
+              <Button
+                type="submit"
+                className="w-full bg-green-600 hover:bg-green-700"
+              >
                 Send Message
               </Button>
             </form>
           </section>
-          
+
           <section className="bg-white rounded-lg shadow-md p-8">
             <h2 className="text-2xl font-semibold mb-6">Contact Information</h2>
             <div className="space-y-4">
@@ -101,5 +121,5 @@ export default function ContactPage() {
         </div>
       </main>
     </div>
-  )
+  );
 }

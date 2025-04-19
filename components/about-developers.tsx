@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Github, Instagram, Linkedin } from "lucide-react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export default function AboutDevelopersPage() {
@@ -112,7 +111,7 @@ export default function AboutDevelopersPage() {
                 }`}
               >
                 <p className="text-lg italic mb-2">"{dev.quote}"</p>
-                <p className="text-right">- {dev.name}</p>
+                <p className="text-right"> "{dev.name}"</p>
               </div>
             ))}
           </div>

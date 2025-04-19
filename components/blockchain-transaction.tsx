@@ -1,30 +1,39 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { Link2, CheckCircle, XCircle, Clock } from 'lucide-react'
-import Link from 'next/link'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { useState } from "react";
+import { CheckCircle, Clock } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 export function BlockchainTransaction() {
-  const [transactionId, setTransactionId] = useState('')
+  const [transactionId, setTransactionId] = useState("");
 
   const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    alert(`Searching for transaction: ${transactionId}`)
-  }
+    e.preventDefault();
+    alert(`Searching for transaction: ${transactionId}`);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-green-100">
-
       <main className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-green-800 mb-8 text-center">Blockchain Transactions</h1>
-        
+        <h1 className="text-4xl font-bold text-green-800 mb-8 text-center">
+          Blockchain Transactions
+        </h1>
+
         <section className="mb-12">
           <p className="text-lg text-gray-700 mb-4">
-            VegeTrace uses blockchain technology to ensure transparency and traceability in the vegetable supply chain. 
-            Each transaction is securely recorded and can be verified on our blockchain.
+            VegeTrace uses blockchain technology to ensure transparency and
+            traceability in the vegetable supply chain. Each transaction is
+            securely recorded and can be verified on our blockchain.
           </p>
         </section>
 
@@ -111,5 +120,5 @@ export function BlockchainTransaction() {
         </section>
       </main>
     </div>
-  )
+  );
 }

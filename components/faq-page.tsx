@@ -26,7 +26,7 @@ const useTypingEffect = (text: string, speed: number = 30) => {
     let i = 0;
     const timer = setInterval(() => {
       if (i < text.length) {
-        setDisplayedText((prev) => text.slice(0, i + 1));
+        setDisplayedText(() => text.slice(0, i + 1));
         i++;
       } else {
         clearInterval(timer);
@@ -201,21 +201,26 @@ export function FaqPage() {
             <Accordion
               type="single"
               collapsible
-              value={expandedItem}
               onValueChange={handleAccordionChange}
               className="w-full"
             >
-              {getCurrentPageItems().map((item, index) => (
-                <AccordionItem value={`item-${index + 1}`} key={index}>
-                  <AccordionTrigger>{item.question}</AccordionTrigger>
-                  <AccordionContent>
-                    <TypingAnswer
-                      answer={item.answer}
-                      isExpanded={expandedItem === `item-${index + 1}`}
-                    />
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
+              {getCurrentPageItems().map((item, index) => {
+                const globalIndex = (currentFAQPage - 1) * itemsPerPage + index;
+                return (
+                  <AccordionItem
+                    value={`item-${globalIndex}`}
+                    key={globalIndex}
+                  >
+                    <AccordionTrigger>{item.question}</AccordionTrigger>
+                    <AccordionContent>
+                      <TypingAnswer
+                        answer={item.answer}
+                        isExpanded={expandedItem === `item-${globalIndex}`}
+                      />
+                    </AccordionContent>
+                  </AccordionItem>
+                );
+              })}
             </Accordion>
             <div className="flex justify-between items-center mt-8">
               <Button

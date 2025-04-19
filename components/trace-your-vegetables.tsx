@@ -12,7 +12,6 @@ import {
   Instagram,
   ArrowUp,
   ArrowDown,
-  Heart,
   Sun,
   Cloud,
   CloudRain,
