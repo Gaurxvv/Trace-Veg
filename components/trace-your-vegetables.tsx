@@ -41,7 +41,6 @@ import { Signup } from "./signup";
 import { BlockchainTransaction } from "./blockchain-transaction";
 import { CropHealth } from "./crop-health";
 import { FarmerPayments } from "./farmer-payments";
-import AboutDevelopersPage from "./about-developers";
 import { TermsOfServicePageComponent } from "./terms-of-service-page";
 import { FaqPage } from "./faq-page";
 
@@ -286,7 +285,6 @@ export function TraceYourVegetablesComponent() {
         {currentPage === "consumers" && <Consumers />}
         {currentPage === "contact" && <Contact />}
         {currentPage === "signup" && <Signup />}
-        {currentPage === "about-developers" && <AboutDevelopersPage />}
         {currentPage === "blockchain" && <BlockchainTransaction />}
         {currentPage === "payments" && <FarmerPayments />}
         {currentPage === "crop-health" && <CropHealth />}
@@ -310,15 +308,6 @@ export function TraceYourVegetablesComponent() {
               Quick Links
             </h3>
             <ul className="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  onClick={() => setCurrentPage("about-developers")}
-                  className="text-green-600 hover:text-green-800"
-                >
-                  About Developers
-                </a>
-              </li>
               <li>
                 <a
                   href="#"
